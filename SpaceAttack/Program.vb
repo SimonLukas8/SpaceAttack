@@ -1,7 +1,10 @@
+Option Explicit On
 Imports System
 
 Module Program
-    Sub Main(args As String())
-        Console.WriteLine("Hello World!")
+    Sub Main()
+
+        Call ErzeugeZeile()
+
     End Sub
 End Module
