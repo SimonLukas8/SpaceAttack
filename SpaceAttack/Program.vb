@@ -56,7 +56,7 @@ Module Program
     Sub Main()
         'Lege die Größe der Konsole fest!
         Console.SetWindowSize(80, 24)
-
+        'Call ZeilenNachUntenVerschieben()
         Call ErzeugeZeile()
 
     End Sub
