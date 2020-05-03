@@ -33,7 +33,7 @@ Module Program
             Randomize()
             Zufallszahl3 = VBMath.Rnd()
             'Position des Blocks bestimmen!
-            Startposition = 199 * Zufallszahl3
+            Startposition = 119 * Zufallszahl3
 
             'Der Vektor darf nicht überlaufen
             If Startposition + HindernisBreite - 1 <= 119 Then
@@ -47,50 +47,39 @@ Module Program
             End If
         Next
 
-        'Gib den Vektor aus
-        'Console.Write(vektor)
-        'Halt das Programm an
-        'Console.ReadLine()
-
     End Sub
 
     Sub ZeilenNachUntenVerschieben()
 
-        Dim Zeilenposition, Spaltenposition, i As Integer
+        Dim Zeilenposition, Spaltenposition, lv1 As Integer
         Dim Spielfeld(29, 119) As Char
 
-        For Zeilenposition = 0 To 29
-            For Spaltenposition = 0 To 119
-                Spielfeld(Zeilenposition, Spaltenposition) = " "
-            Next
-        Next
-
-
-        For i = 1 To 70
+        Do
 
             Call ErzeugeZeile()
 
-            'Schreibe die generierte Zufallszeile in die oberste Zeile des Spielfelds rein
-
+            'Kopiere jede Zeile eins nach unten mit der Untersten beginnend!
 
             For Zeilenposition = 29 To 1 Step -1
 
 
-                'Kopiere jede Zeile nach unten (mit der zweituntersten beginnend)
-
                 For Spaltenposition = 0 To 119
                     Spielfeld(Zeilenposition, Spaltenposition) = Spielfeld(Zeilenposition - 1, Spaltenposition)
+
                 Next
 
+            Next
 
+            'Schreibe die erzeugte zufällige Zeile in die Matrix
+
+            For lv1 = 0 To 119
+
+                Spielfeld(0, lv1) = vektor(lv1)
 
             Next
 
-            For Spaltenposition = 0 To 119
+            Console.SetCursorPosition(0, 0)
 
-                Spielfeld(0, Spaltenposition) = vektor(Spaltenposition)
-
-            Next
             'Zeig das Spielfeld auf der Console an
             For Zeilenposition = 0 To 29
                 For Spaltenposition = 0 To 119
@@ -99,9 +88,9 @@ Module Program
 
             Next
 
-            Thread.Sleep(3000)
-        Next
-        Console.Read()
+            Thread.Sleep(500)
+        Loop
+
     End Sub
 
     Sub Main()
